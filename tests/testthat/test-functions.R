@@ -1,3 +1,6 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+
+test_that("orthologs()", {
+  orthologs_df <- orthologs()
+  expect_s3_class(orthologs_df, "data.frame")
+  expect_lt(nrow(orthologs_df), 100)
 })

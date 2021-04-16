@@ -5,5 +5,5 @@
 #'
 #' @export
 orthologs <- function() {
-  print("Hello, orthologs!")
+  return(data.frame())
 }
