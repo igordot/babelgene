@@ -1,0 +1,15 @@
+Package: babelgene
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.0.0.9000
+Authors@R: person("Igor", "Dolgalev", email = "igor.dolgalev@nyumc.org", role = c("aut", "cre"))
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0),
+    covr
+Config/testthat/edition: 3
+RoxygenNote: 7.1.1
