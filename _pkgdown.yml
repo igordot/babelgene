@@ -1,1 +1,20 @@
 url: https://igordot.github.io/babelgene
+
+template:
+  params:
+    bootswatch: readable
+    ganalytics: UA-130263433-2
+
+navbar:
+  structure:
+    left: []
+    right: [home, intro, reference, articles, news, github]
+  components:
+    home: ~
+    articles: ~
+    intro:
+      text: Get started
+      href: articles/babelgene-intro.html
+
+home:
+  strip_header: true

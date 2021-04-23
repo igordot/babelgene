@@ -1,0 +1,76 @@
+---
+title: "Introduction to babelgene"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to babelgene}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+Genomic analysis of model organisms often requires the use of databases based on human data or making comparisons to patient-derived resources.
+This requires converting genes between human and non-human equivalents.
+The `babelgene` R package provides provides gene orthologs/homologs:
+
+* in an R-friendly tidy/long format with one gene pair per row
+* for multiple frequently studied model organisms, such as mouse, rat, fly, and zebrafish
+* sourced from multiple databases
+* as gene symbols, NCBI Entrez, or Ensembl IDs
+* can be queried without an active internet connection
+
+## Usage
+
+You can install the `babelgene` R package from CRAN.
+
+```{r install-package, eval=FALSE}
+install.packages("babelgene")
+```
+
+Load `babelgene`.
+
+```{r load-package, message=FALSE}
+library(babelgene)
+```
+
+The main functionality is accessed via the `orthologs()` function which takes one or more genes and outputs a data frame of predicted ortholog/homolog pairs.
+The output data frame contains gene symbols and IDs for human and the specified species.
+Several examples are provided below.
+
+Get mouse equivalents for a set of human genes.
+
+```{r human-input}
+orthologs(genes = c("TP53", "EGFR", "IL6", "TGFB1", "CD4"), species = "mouse")
+```
+
+Input genes are assumed to be human by default.
+You can specify if the input genes are human with the `human` parameter.
+
+```{r fly-input}
+orthologs(genes = "Pu", species = "fruit fly", human = FALSE)
+```
+
+It is possible to search by NCBI Entrez or Ensembl IDs instead of gene symbols.
+
+```{r ensembl-input}
+orthologs(genes = "ENSG00000111640", species = "mouse", human = TRUE)
+```
+
+The `orthologs()` function requires the `species` parameter to be set.
+You can check all the species that can be queried with the help of the `species()` function.
+
+```{r species}
+species()
+```
+
+## Details
+
+The package is based on the data provided by the Human Genome Organization (HUGO) Gene Nomenclature Committee (HGNC) at the European Bioinformatics Institute.
+The HGNC Comparison of Orthology Predictions (HCOP) integrates the orthology assertions predicted for human genes by eggNOG, Ensembl Compara, HGNC, HomoloGene, Inparanoid, NCBI Gene Orthology, OMA, OrthoDB, OrthoMCL, Panther, PhylomeDB, TreeFam and ZFIN.
