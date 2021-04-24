@@ -2,13 +2,13 @@
 #'
 #' Retrieve gene orthologs/homologs for a set of genes.
 #'
-#' @param genes A vector of gene symbols or IDs.
-#' @param species Species name, such as \code{Mus musculus} or \code{mouse} (see `species()` for options).
-#' @param human Input genes are human or not.
+#' @param genes A vector of gene symbols or Entrez/Ensembl IDs.
+#' @param species Species name, such as \code{Mus musculus} or \code{mouse} (see \code{species()} for options).
+#' @param human Input genes are human (or not).
 #' @param min_support Minimum number of supporting sources.
-#' @param top For each gene, select the match with the highest support level.
+#' @param top For each gene, output only the match with the highest support level.
 #'
-#' @return A data frame of the available species.
+#' @return A data frame of gene pairs (human and given species).
 #'
 #' @references
 #' Wright MW, Eyre TA, Lush MJ, Povey S, Bruford EA. HCOP: the HGNC comparison of orthology predictions search tool. \emph{Mamm Genome}. 2005 Nov;16(11):827-8. \doi{10.1007/s00335-005-0103-2}
@@ -95,7 +95,7 @@ orthologs <- function(genes, species, human = TRUE, min_support = 3, top = TRUE)
 
 #' Retrieve the available species
 #'
-#' .
+#' List the species with available human orthologs.
 #'
 #' @param species Species name, such as \code{Mus musculus} or \code{mouse}.
 #'
