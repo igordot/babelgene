@@ -36,8 +36,10 @@ test_that("orthologs identifier types", {
   ptprc_sym <- orthologs(genes = "PTPRC", species = "mouse")
   ptprc_ent <- orthologs(genes = 5788, species = "mouse")
   ptprc_ens <- orthologs(genes = "ENSG00000081237", species = "mouse")
+  ptprc_ens_m <- orthologs(genes = "ENSMUSG00000026395", species = "mouse", human = FALSE)
   expect_identical(ptprc_sym, ptprc_ent)
   expect_identical(ptprc_sym, ptprc_ens)
+  expect_identical(ptprc_sym, ptprc_ens_m)
 })
 
 test_that("orthologs edge cases", {
@@ -93,8 +95,12 @@ test_that("orthologs wrong input", {
   expect_error(orthologs(genes = "xxxxx", species = "mouse"))
   expect_error(orthologs(genes = "xxxxx", species = "mouse", human = FALSE))
   expect_error(orthologs(genes = "PTPRC", species = "xxxxx"))
+  expect_error(orthologs(genes = "PTPRC", species = 10090))
   expect_error(orthologs(genes = "PTPRC", species = "mouse", human = "xxxxx"))
   expect_error(orthologs(genes = "PTPRC", species = "mouse", top = "xxxxx"))
+  expect_error(orthologs(genes = c("PTPRC", "ENSG00000081237"), species = "mouse"))
+  expect_error(orthologs(genes = c("Ptprc", "ENSMUSG00000026395"), species = "mouse", human = FALSE))
+  expect_error(orthologs(genes = data.frame(gene = "PTPRC"), species = "mouse", top = "xxxxx"))
 })
 
 test_that("species basics", {
@@ -104,4 +110,8 @@ test_that("species basics", {
   spm <- species("mouse")
   expect_s3_class(spm, "data.frame")
   expect_equal(nrow(spm), 1)
+  spr <- species("rat")
+  expect_s3_class(spr, "data.frame")
+  expect_equal(nrow(spr), 1)
+  expect_error(species(10090))
 })
