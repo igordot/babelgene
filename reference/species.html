@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve gene orthologs/homologs — orthologs • babelgene</title>
+<title>Retrieve the available species — species • babelgene</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Retrieve gene orthologs/homologs — orthologs" />
-<meta property="og:description" content="Retrieve gene orthologs/homologs for a set of genes." />
+<meta property="og:title" content="Retrieve the available species — species" />
+<meta property="og:description" content="." />
 
 
 
@@ -119,73 +119,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve gene orthologs/homologs</h1>
+    <h1>Retrieve the available species</h1>
     <small class="dont-index">Source: <a href='https://github.com/igordot/babelgene/blob/master/R/functions.R'><code>R/functions.R</code></a></small>
-    <div class="hidden name"><code>orthologs.Rd</code></div>
+    <div class="hidden name"><code>species.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Retrieve gene orthologs/homologs for a set of genes.</p>
+    <p>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>orthologs</span><span class='op'>(</span><span class='va'>genes</span>, <span class='va'>species</span>, human <span class='op'>=</span> <span class='cn'>TRUE</span>, min_support <span class='op'>=</span> <span class='fl'>3</span>, top <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>species</span><span class='op'>(</span>species <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>genes</th>
-      <td><p>A vector of gene symbols or IDs.</p></td>
-    </tr>
-    <tr>
       <th>species</th>
-      <td><p>Species name, such as <code>Mus musculus</code> or <code>mouse</code> (see `species()` for options).</p></td>
-    </tr>
-    <tr>
-      <th>human</th>
-      <td><p>Input genes are human or not.</p></td>
-    </tr>
-    <tr>
-      <th>min_support</th>
-      <td><p>Minimum number of supporting sources.</p></td>
-    </tr>
-    <tr>
-      <th>top</th>
-      <td><p>For each gene, select the match with the highest support level.</p></td>
+      <td><p>Species name, such as <code>Mus musculus</code> or <code>mouse</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A data frame of the available species.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Wright MW, Eyre TA, Lush MJ, Povey S, Bruford EA. HCOP: the HGNC comparison of orthology predictions search tool. <em>Mamm Genome</em>. 2005 Nov;16(11):827-8. doi: <a href='https://doi.org/10.1007/s00335-005-0103-2'>10.1007/s00335-005-0103-2</a></p>
-<p>Eyre TA, Wright MW, Lush MJ, Bruford EA. HCOP: a searchable database of human orthology predictions. <em>Brief Bioinform</em>. 2007 Jan;8(1):2-5. doi: <a href='https://doi.org/10.1093/bib/bbl030'>10.1093/bib/bbl030</a></p>
-<p>Seal RL, Gordon SM, Lush MJ, Wright MW, Bruford EA. genenames.org: the HGNC resources in 2011. <em>Nucleic Acids Res</em>. 2011 Jan;39:D514-9. doi: <a href='https://doi.org/10.1093/nar/gkq892'>10.1093/nar/gkq892</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>orthologs</span><span class='op'>(</span>genes <span class='op'>=</span> <span class='st'>"TP53"</span>, species <span class='op'>=</span> <span class='st'>"mouse"</span>, human <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   human_symbol human_entrez   human_ensembl taxon_id symbol entrez
-#&gt; 1         TP53         7157 ENSG00000141510    10090  Trp53  22059
-#&gt;              ensembl
-#&gt; 1 ENSMUSG00000059552
-#&gt;                                                                                         support
-#&gt; 1 EggNOG|Ensembl|HGNC|HomoloGene|Inparanoid|NCBI|OMA|OrthoDB|OrthoMCL|Panther|PhylomeDB|Treefam
-#&gt;   support_n
-#&gt; 1        12</div><div class='input'><span class='fu'>orthologs</span><span class='op'>(</span>genes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ptprc"</span>, <span class='st'>"Cd34"</span><span class='op'>)</span>, species <span class='op'>=</span> <span class='st'>"mouse"</span>, human <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   human_symbol human_entrez   human_ensembl taxon_id symbol entrez
-#&gt; 1         CD34          947 ENSG00000174059    10090   Cd34  12490
-#&gt; 2        PTPRC         5788 ENSG00000081237    10090  Ptprc  19264
-#&gt;              ensembl
-#&gt; 1 ENSMUSG00000016494
-#&gt; 2 ENSMUSG00000026395
-#&gt;                                                                                         support
-#&gt; 1 EggNOG|Ensembl|HGNC|HomoloGene|Inparanoid|NCBI|OMA|OrthoDB|OrthoMCL|Panther|PhylomeDB|Treefam
-#&gt; 2                   EggNOG|Ensembl|HGNC|HomoloGene|Inparanoid|NCBI|OMA|OrthoDB|OrthoMCL|Panther
-#&gt;   support_n
-#&gt; 1        12
-#&gt; 2        10</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>species</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    taxon_id                 scientific_name
+#&gt; 1     28377             Anolis carolinensis
+#&gt; 2      9913                      Bos taurus
+#&gt; 3      6239          Caenorhabditis elegans
+#&gt; 4      9615          Canis lupus familiaris
+#&gt; 5      7955                     Danio rerio
+#&gt; 6      7227         Drosophila melanogaster
+#&gt; 7      9796                  Equus caballus
+#&gt; 8      9685                     Felis catus
+#&gt; 9      9031                   Gallus gallus
+#&gt; 10     9544                  Macaca mulatta
+#&gt; 11    13616           Monodelphis domestica
+#&gt; 12    10090                    Mus musculus
+#&gt; 13     9258        Ornithorhynchus anatinus
+#&gt; 14     9598                 Pan troglodytes
+#&gt; 15    10116               Rattus norvegicus
+#&gt; 16     4932        Saccharomyces cerevisiae
+#&gt; 17   284812 Schizosaccharomyces pombe 972h-
+#&gt; 18     9823                      Sus scrofa
+#&gt; 19     8364              Xenopus tropicalis
+#&gt;                                                       common_name
+#&gt; 1                                     Carolina anole, green anole
+#&gt; 2   bovine, cattle, cow, dairy cow, domestic cattle, domestic cow
+#&gt; 3                                                       roundworm
+#&gt; 4                                                       dog, dogs
+#&gt; 5               leopard danio, zebra danio, zebra fish, zebrafish
+#&gt; 6                                                       fruit fly
+#&gt; 7                                   domestic horse, equine, horse
+#&gt; 8                                         cat, cats, domestic cat
+#&gt; 9                    bantam, chicken, chickens, Gallus domesticus
+#&gt; 10 rhesus macaque, rhesus macaques, Rhesus monkey, rhesus monkeys
+#&gt; 11                                      gray short-tailed opossum
+#&gt; 12                                             house mouse, mouse
+#&gt; 13              duck-billed platypus, duckbill platypus, platypus
+#&gt; 14                                                     chimpanzee
+#&gt; 15                               brown rat, Norway rat, rat, rats
+#&gt; 16                   baker's yeast, brewer's yeast, S. cerevisiae
+#&gt; 17                                                           &lt;NA&gt;
+#&gt; 18                                    pig, pigs, swine, wild boar
+#&gt; 19                      tropical clawed frog, western clawed frog</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
