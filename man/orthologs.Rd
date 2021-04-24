@@ -7,18 +7,18 @@
 orthologs(genes, species, human = TRUE, min_support = 3, top = TRUE)
 }
 \arguments{
-\item{genes}{A vector of gene symbols or IDs.}
+\item{genes}{A vector of gene symbols or Entrez/Ensembl IDs.}
 
-\item{species}{Species name, such as \code{Mus musculus} or \code{mouse} (see `species()` for options).}
+\item{species}{Species name, such as \code{Mus musculus} or \code{mouse} (see \code{species()} for options).}
 
-\item{human}{Input genes are human or not.}
+\item{human}{Input genes are human (or not).}
 
 \item{min_support}{Minimum number of supporting sources.}
 
-\item{top}{For each gene, select the match with the highest support level.}
+\item{top}{For each gene, output only the match with the highest support level.}
 }
 \value{
-A data frame of the available species.
+A data frame of gene pairs (human and given species).
 }
 \description{
 Retrieve gene orthologs/homologs for a set of genes.

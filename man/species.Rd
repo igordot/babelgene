@@ -13,7 +13,7 @@ species(species = NULL)
 A data frame of the available species.
 }
 \description{
-.
+List the species with available human orthologs.
 }
 \examples{
 species()
