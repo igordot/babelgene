@@ -135,15 +135,15 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>genes</th>
-      <td><p>A vector of gene symbols or IDs.</p></td>
+      <td><p>A vector of gene symbols or Entrez/Ensembl IDs.</p></td>
     </tr>
     <tr>
       <th>species</th>
-      <td><p>Species name, such as <code>Mus musculus</code> or <code>mouse</code> (see `species()` for options).</p></td>
+      <td><p>Species name, such as <code>Mus musculus</code> or <code>mouse</code> (see <code><a href='species.html'>species()</a></code> for options).</p></td>
     </tr>
     <tr>
       <th>human</th>
-      <td><p>Input genes are human or not.</p></td>
+      <td><p>Input genes are human (or not).</p></td>
     </tr>
     <tr>
       <th>min_support</th>
@@ -151,13 +151,13 @@
     </tr>
     <tr>
       <th>top</th>
-      <td><p>For each gene, select the match with the highest support level.</p></td>
+      <td><p>For each gene, output only the match with the highest support level.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame of the available species.</p>
+    <p>A data frame of gene pairs (human and given species).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Wright MW, Eyre TA, Lush MJ, Povey S, Bruford EA. HCOP: the HGNC comparison of orthology predictions search tool. <em>Mamm Genome</em>. 2005 Nov;16(11):827-8. doi: <a href='https://doi.org/10.1007/s00335-005-0103-2'>10.1007/s00335-005-0103-2</a></p>
