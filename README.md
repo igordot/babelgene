@@ -14,4 +14,4 @@ It provides provides gene orthologs/homologs:
 * as gene symbols, NCBI Entrez, and Ensembl IDs
 * without a need for an active internet connection
 
-Check the [documentation website](https://igordot.github.io/babelgene) for more information.
+Check the [documentation website](https://igordot.github.io/babelgene/) for more information.

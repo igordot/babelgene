@@ -1,3 +1,3 @@
-# babelgene (development version)
+# babelgene 21.4
 
-* Added a `NEWS.md` file to track changes to the package.
+* Initial CRAN submission.
