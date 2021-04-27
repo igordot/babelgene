@@ -1,7 +1,8 @@
 # babelgene
 
+[![CRAN](https://www.r-pkg.org/badges/version/babelgene)](https://cran.r-project.org/package=babelgene)
 [![R build status](https://github.com/igordot/babelgene/workflows/R-CMD-check/badge.svg)](https://github.com/igordot/babelgene/actions)
-[![codecov](https://codecov.io/gh/igordot/babelgene/branch/master/graph/badge.svg)](https://codecov.io/gh/igordot/babelgene)
+[![codecov](https://codecov.io/gh/igordot/babelgene/branch/main/graph/badge.svg?token=j2n6FRGaZ7)](https://codecov.io/gh/igordot/babelgene)
 
 Genomic analysis of model organisms often requires the use of databases based on human data or making comparisons to patient-derived resources.
 This requires converting genes between human and non-human equivalents.

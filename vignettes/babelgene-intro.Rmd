@@ -29,7 +29,7 @@ It provides provides gene orthologs/homologs:
 
 ## Usage
 
-You can install the `babelgene` R package from CRAN.
+You can install the `babelgene` R package from [CRAN](https://cran.r-project.org/package=babelgene).
 
 ```{r install-package, eval=FALSE}
 install.packages("babelgene")
