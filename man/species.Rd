@@ -7,7 +7,7 @@
 species(species = NULL)
 }
 \arguments{
-\item{species}{Species name, such as \code{Mus musculus} or \code{mouse}.}
+\item{species}{Species name, such as \code{Mus musculus} or \code{mouse}. If specified, will return results for the given species only.}
 }
 \value{
 A data frame of the available species.
@@ -17,4 +17,7 @@ List the species with available human orthologs.
 }
 \examples{
 species()
+species("Mus musculus")
+species("mouse")
+species("rat")
 }

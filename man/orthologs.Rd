@@ -9,19 +9,20 @@ orthologs(genes, species, human = TRUE, min_support = 3, top = TRUE)
 \arguments{
 \item{genes}{A vector of gene symbols or Entrez/Ensembl IDs.}
 
-\item{species}{Species name, such as \code{Mus musculus} or \code{mouse} (see \code{species()} for options).}
+\item{species}{Species name, such as \code{Mus musculus} or \code{mouse} (see \code{\link[=species]{species()}} for options).}
 
-\item{human}{Input genes are human (or not).}
+\item{human}{A logical scalar indicating if the input genes are human. If \code{TRUE}, the input genes are human. If \code{FALSE}, the input genes correspond to the non-human species and the output will be the human equivalents.}
 
-\item{min_support}{Minimum number of supporting sources.}
+\item{min_support}{Minimum number of supporting source databases.}
 
-\item{top}{For each gene, output only the match with the highest support level.}
+\item{top}{For each gene, output only the match with the highest support level when there are multiple hits.}
 }
 \value{
 A data frame of gene pairs (human and given species).
 }
 \description{
 Retrieve gene orthologs/homologs for a set of genes.
+Converts between human and non-human analogs.
 }
 \examples{
 orthologs(genes = "TP53", species = "mouse", human = TRUE)
