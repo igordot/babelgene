@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://igordot.github.io/babelgene/404.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/articles/babelgene-intro.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/authors.html</loc>
+  </url>
+  <url>
     <loc>https://igordot.github.io/babelgene/index.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://igordot.github.io/babelgene/reference/index.html</loc>
   </url>
   <url>
     <loc>https://igordot.github.io/babelgene/reference/orthologs.html</loc>
   </url>
   <url>
     <loc>https://igordot.github.io/babelgene/reference/species.html</loc>
-  </url>
-  <url>
-    <loc>https://igordot.github.io/babelgene/articles/babelgene-intro.html</loc>
   </url>
 </urlset>
