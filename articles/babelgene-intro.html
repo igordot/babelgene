@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">babelgene</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">21.4.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">21.4.9001</span>
       </span>
     </div>
 
@@ -147,10 +147,10 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/orthologs.html">orthologs</a></span><span class="op">(</span>genes <span class="op">=</span> <span class="st">"ENSG00000111640"</span>, species <span class="op">=</span> <span class="st">"mouse"</span>, human <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;   human_symbol human_entrez   human_ensembl taxon_id symbol entrez</span>
 <span class="co">#&gt; 1        GAPDH         2597 ENSG00000111640    10090  Gapdh  14433</span>
-<span class="co">#&gt;              ensembl                                                   support</span>
-<span class="co">#&gt; 1 ENSMUSG00000057666 HGNC|HomoloGene|NCBI|OMA|OrthoDB|OrthoMCL|Panther|Treefam</span>
-<span class="co">#&gt;   support_n</span>
-<span class="co">#&gt; 1         8</span></code></pre></div>
+<span class="co">#&gt;              ensembl</span>
+<span class="co">#&gt; 1 ENSMUSG00000057666</span>
+<span class="co">#&gt;                                                             support support_n</span>
+<span class="co">#&gt; 1 Ensembl|HGNC|HomoloGene|NCBI|OMA|OrthoDB|OrthoMCL|Panther|Treefam         9</span></code></pre></div>
 <p>The <code><a href="../reference/orthologs.html">orthologs()</a></code> function requires the <code>species</code> parameter to be set. You can check all the species that can be queried with the help of the <code><a href="../reference/species.html">species()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/species.html">species</a></span><span class="op">(</span><span class="op">)</span>
@@ -174,26 +174,26 @@
 <span class="co">#&gt; 17   284812 Schizosaccharomyces pombe 972h-</span>
 <span class="co">#&gt; 18     9823                      Sus scrofa</span>
 <span class="co">#&gt; 19     8364              Xenopus tropicalis</span>
-<span class="co">#&gt;                                                       common_name</span>
-<span class="co">#&gt; 1                                     Carolina anole, green anole</span>
-<span class="co">#&gt; 2   bovine, cattle, cow, dairy cow, domestic cattle, domestic cow</span>
-<span class="co">#&gt; 3                                                       roundworm</span>
-<span class="co">#&gt; 4                                                       dog, dogs</span>
-<span class="co">#&gt; 5               leopard danio, zebra danio, zebra fish, zebrafish</span>
-<span class="co">#&gt; 6                                                       fruit fly</span>
-<span class="co">#&gt; 7                                   domestic horse, equine, horse</span>
-<span class="co">#&gt; 8                                         cat, cats, domestic cat</span>
-<span class="co">#&gt; 9                    bantam, chicken, chickens, Gallus domesticus</span>
-<span class="co">#&gt; 10 rhesus macaque, rhesus macaques, Rhesus monkey, rhesus monkeys</span>
-<span class="co">#&gt; 11                                      gray short-tailed opossum</span>
-<span class="co">#&gt; 12                                             house mouse, mouse</span>
-<span class="co">#&gt; 13              duck-billed platypus, duckbill platypus, platypus</span>
-<span class="co">#&gt; 14                                                     chimpanzee</span>
-<span class="co">#&gt; 15                               brown rat, Norway rat, rat, rats</span>
-<span class="co">#&gt; 16                   baker's yeast, brewer's yeast, S. cerevisiae</span>
-<span class="co">#&gt; 17                                                           &lt;NA&gt;</span>
-<span class="co">#&gt; 18                                    pig, pigs, swine, wild boar</span>
-<span class="co">#&gt; 19                      tropical clawed frog, western clawed frog</span></code></pre></div>
+<span class="co">#&gt;                                                                common_name</span>
+<span class="co">#&gt; 1                                              Carolina anole, green anole</span>
+<span class="co">#&gt; 2  bovine, cattle, cow, dairy cow, domestic cattle, domestic cow, ox, oxen</span>
+<span class="co">#&gt; 3                                                                     &lt;NA&gt;</span>
+<span class="co">#&gt; 4                                                                dog, dogs</span>
+<span class="co">#&gt; 5                        leopard danio, zebra danio, zebra fish, zebrafish</span>
+<span class="co">#&gt; 6                                                                fruit fly</span>
+<span class="co">#&gt; 7                                            domestic horse, equine, horse</span>
+<span class="co">#&gt; 8                                                  cat, cats, domestic cat</span>
+<span class="co">#&gt; 9                             bantam, chicken, chickens, Gallus domesticus</span>
+<span class="co">#&gt; 10          rhesus macaque, rhesus macaques, Rhesus monkey, rhesus monkeys</span>
+<span class="co">#&gt; 11                                               gray short-tailed opossum</span>
+<span class="co">#&gt; 12                                                      house mouse, mouse</span>
+<span class="co">#&gt; 13                       duck-billed platypus, duckbill platypus, platypus</span>
+<span class="co">#&gt; 14                                                              chimpanzee</span>
+<span class="co">#&gt; 15                                        brown rat, Norway rat, rat, rats</span>
+<span class="co">#&gt; 16                            baker's yeast, brewer's yeast, S. cerevisiae</span>
+<span class="co">#&gt; 17                                                                    &lt;NA&gt;</span>
+<span class="co">#&gt; 18                                             pig, pigs, swine, wild boar</span>
+<span class="co">#&gt; 19                               tropical clawed frog, western clawed frog</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
