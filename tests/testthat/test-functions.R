@@ -42,7 +42,7 @@ test_that("orthologs identifier types", {
   expect_identical(ptprc_sym, ptprc_ens_m)
 })
 
-test_that("orthologs edge cases", {
+test_that("orthologs unusual symbols", {
   # gene symbol that can also be Entrez ID
   int_312 <- orthologs(genes = 312, species = "fruit fly", human = FALSE)
   str_312 <- orthologs(genes = "312", species = "fruit fly", human = FALSE)
@@ -50,12 +50,16 @@ test_that("orthologs edge cases", {
   expect_equal(nrow(int_312), 1)
   expect_identical(int_312, str_312)
   expect_identical(int_312, id_312)
+  # gene symbol that can also be Ensembl ID (not present in HCOP yet)
+  ens_mix <- orthologs(genes = c("ENSG00000083622", "ENSG00000145063", "ENSA"), species = "mouse")
+  expect_equal(nrow(ens_mix), 1)
   # multiple Ensembl IDs corresponding to the same symbol
-  pde_sym_top <- orthologs(genes = "PDE11A", species = "mouse")
-  pde_ens_all <- orthologs(genes = "ENSG00000128655", species = "mouse", top = FALSE)
-  pde_sym_all <- orthologs(genes = "PDE11A", species = "mouse", top = FALSE)
-  expect_identical(pde_sym_top, pde_ens_all)
-  expect_lt(nrow(pde_sym_top), nrow(pde_sym_all))
+  ndst_sym_top <- orthologs(genes = "NDST2", species = "mouse")
+  ndst_ens_all <- orthologs(genes = "ENSG00000166507", species = "mouse", top = FALSE)
+  ndst_sym_all <- orthologs(genes = "NDST2", species = "mouse", top = FALSE)
+  expect_identical(ndst_sym_top, ndst_ens_all)
+  expect_lt(nrow(ndst_sym_top), nrow(ndst_sym_all))
+  expect_lt(nrow(ndst_ens_all), nrow(ndst_sym_all))
 })
 
 test_that("orthologs species", {
@@ -87,6 +91,18 @@ test_that("orthologs top", {
   expect_equal(nrow(gapdh_top), nrow(gapdh_top_t))
   expect_equal(nrow(gapdh_top_t), 1)
   expect_lt(nrow(gapdh_top_t), nrow(gapdh_top_f))
+})
+
+test_that("orthologs min_support", {
+  lilrb_default <- orthologs(genes = "LILRB3", species = "mouse", top = FALSE)
+  lilrb_min1 <- orthologs(genes = "LILRB3", species = "mouse", min_support = 1, top = FALSE)
+  lilrb_min3 <- orthologs(genes = "LILRB3", species = "mouse", min_support = 3, top = FALSE)
+  lilrb_min5 <- orthologs(genes = "LILRB3", species = "mouse", min_support = 5, top = FALSE)
+  lilrb_min9 <- orthologs(genes = "LILRB3", species = "mouse", min_support = 9, top = FALSE)
+  expect_equal(nrow(lilrb_min5), 1)
+  expect_equal(nrow(lilrb_min9), 0)
+  expect_equal(nrow(lilrb_min3), nrow(lilrb_default))
+  expect_lt(nrow(lilrb_default), nrow(lilrb_min1))
 })
 
 test_that("orthologs wrong input", {

@@ -7,7 +7,7 @@ library(stringr)
 library(glue)
 library(usethis)
 
-# Import HCOP orthologs ---------------------------------------------------
+# Import HCOP orthologs -----
 
 # Import the human and ortholog data from all HCOP species
 hcop_txt_url <- "ftp://ftp.ebi.ac.uk/pub/databases/genenames/hcop/human_all_hcop_sixteen_column.txt.gz"
@@ -16,7 +16,7 @@ format(object.size(hcop), units = "Mb")
 nrow(hcop)
 
 # Check if the HCOP table is too small
-if (nrow(hcop) < 865000) stop("HCOP file may be truncated")
+if (nrow(hcop) < 860000) stop("HCOP file may be truncated")
 
 # Clean up the table of orthologs
 orthologs <-
@@ -58,7 +58,7 @@ orthologs <- mutate(orthologs, support = map_chr(support, paste, collapse = "|")
 orthologs <- mutate(orthologs, support_n = str_count(support, "\\|") + 1)
 orthologs %>% count(support_n)
 
-# Filter ortholog pair with only one supporting database
+# Filter ortholog pairs found in only one supporting database
 orthologs <- filter(orthologs, support_n > 1)
 
 # Check orthologs stats
@@ -68,7 +68,7 @@ orthologs %>%
   group_by(taxon_id) %>%
   summarize(n_distinct(human_symbol), n_distinct(symbol), max(support_n))
 
-# Import MGI orthologs ----------------------------------------------------
+# Import MGI orthologs (for testing) -----
 
 # Import the human and mouse data from MGI
 mgi_txt_url <- "http://www.informatics.jax.org/downloads/reports/HMD_HumanPhenotype.rpt"
@@ -76,17 +76,19 @@ mgi <- read_tsv(mgi_txt_url, col_names = FALSE, col_types = cols())
 format(object.size(mgi), units = "Mb")
 nrow(mgi)
 
-# Clean up the table of orthologs
-mgi_orthologs <-
-  mgi %>%
-  select(human_symbol = X1, mouse_symbol = X5) %>%
-  distinct()
+# Select the gene columns (using grep since the order of columns changes)
+mgi_orthologs <- mgi[grep("GAPDH|Gapdh", mgi)]
+colnames(mgi_orthologs) <- c("human_symbol", "mouse_symbol")
+mgi_orthologs <- distinct(mgi_orthologs)
+
+if (!"GAPDH" %in% mgi_orthologs$human_symbol) stop("wrong human columns selected")
+if (!"Gapdh" %in% mgi_orthologs$mouse_symbol) stop("wrong mouse columns selected")
 
 # Check the number of genes
 n_distinct(mgi_orthologs$human_symbol)
 n_distinct(mgi_orthologs$mouse_symbol)
 
-# Import taxonomy data ----------------------------------------------------
+# Import taxonomy data -----
 
 # Download the taxonomy zip file
 taxdmp_url <- "https://ftp.ncbi.nih.gov/pub/taxonomy/taxdmp.zip"
@@ -121,7 +123,7 @@ species %>%
   group_by(name, taxon_id) %>%
   summarize(n_distinct(ensembl))
 
-# Prepare package ---------------------------------------------------------
+# Prepare package -----
 
 # Convert to standard data frames (dplyr pipeline sets them as tibbles)
 orthologs_df <- as.data.frame(orthologs)
