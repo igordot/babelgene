@@ -1,11 +1,20 @@
-Package: babelgene
 Type: Package
+Package: babelgene
 Title: Gene Orthologs for Model Organisms in a Tidy Data Format
 Version: 21.4.9001
-Authors@R: person("Igor", "Dolgalev", email = "igor.dolgalev@nyumc.org", role = c("aut", "cre"))
-Description: Genomic analysis of model organisms frequently requires the use of databases based on human data or making comparisons to patient-derived resources. This requires harmonization of gene names into the same gene space. The 'babelgene' R package converts between human and non-human gene orthologs/homologs. The package integrates orthology assertion predictions sourced from multiple databases as compiled by the HGNC Comparison of Orthology Predictions (HCOP) (Wright et al. 2005 <doi:10.1007/s00335-005-0103-2>, Eyre et al. 2007 <doi:10.1093/bib/bbl030>, Seal et al. 2011 <doi:10.1093/nar/gkq892>).
+Authors@R: 
+    person("Igor", "Dolgalev", , "igor.dolgalev@nyumc.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4451-126X"))
+Description: Genomic analysis of model organisms frequently requires the
+    use of databases based on human data or making comparisons to
+    patient-derived resources. This requires harmonization of gene names
+    into the same gene space. The 'babelgene' R package converts between
+    human and non-human gene orthologs/homologs. The package integrates
+    orthology assertion predictions sourced from multiple databases as
+    compiled by the HGNC Comparison of Orthology Predictions (HCOP)
+    (Wright et al. 2005 <doi:10.1007/s00335-005-0103-2>, Eyre et al. 2007
+    <doi:10.1093/bib/bbl030>, Seal et al. 2011 <doi:10.1093/nar/gkq892>).
 License: MIT + file LICENSE
-Encoding: UTF-8
 URL: https://igordot.github.io/babelgene/
 BugReports: https://github.com/igordot/babelgene/issues
 Depends: 
@@ -19,6 +28,8 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
+Encoding: UTF-8
 RoxygenNote: 7.1.2
-VignetteBuilder: knitr

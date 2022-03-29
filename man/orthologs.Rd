@@ -15,7 +15,7 @@ orthologs(genes, species, human = TRUE, min_support = 3, top = TRUE)
 
 \item{min_support}{Minimum number of supporting source databases.}
 
-\item{top}{For each gene, output only the match with the highest support level when there are multiple hits.}
+\item{top}{For each gene, output only the match with the highest support level if there are multiple hits.}
 }
 \value{
 A data frame of gene pairs (human and given species).

@@ -7,7 +7,7 @@
 #' @param species Species name, such as \code{Mus musculus} or \code{mouse} (see \code{\link[=species]{species()}} for options).
 #' @param human A logical scalar indicating if the input genes are human. If \code{TRUE}, the input genes are human. If \code{FALSE}, the input genes correspond to the non-human species and the output will be the human equivalents.
 #' @param min_support Minimum number of supporting source databases.
-#' @param top For each gene, output only the match with the highest support level when there are multiple hits.
+#' @param top For each gene, output only the match with the highest support level if there are multiple hits.
 #'
 #' @return A data frame of gene pairs (human and given species).
 #'
@@ -29,16 +29,19 @@
 orthologs <- function(genes, species, human = TRUE, min_support = 3, top = TRUE) {
   # check if inputs are valid
   if (!is.vector(genes)) {
-    stop("`genes` must be a character vector (can be a single gene)")
+    stop("`genes` is not a character vector (can be a single gene)")
   }
   if (!is(species, "character")) {
-    stop("`species` must be a character string")
+    stop("`species` is not a character string")
   }
   if (!is.logical(human)) {
-    stop("`human` must be TRUE/FALSE")
+    stop("`human` is not TRUE/FALSE")
+  }
+  if (!is.numeric(min_support)) {
+    stop("`min_support` is not a number")
   }
   if (!is.logical(top)) {
-    stop("`top` must be TRUE/FALSE")
+    stop("`top` is not TRUE/FALSE")
   }
 
   # subset the orthologs table to the relevant species
@@ -80,7 +83,10 @@ orthologs <- function(genes, species, human = TRUE, min_support = 3, top = TRUE)
     }
   }
 
-  # select only the top match for each gene
+  # filter by the number of supporting databases
+  odf <- odf[odf$support_n >= min_support, ]
+
+  # select only the best match for each gene
   if (top) {
     odf <- dplyr::group_by(odf, .data[[gene_col]], .data[["taxon_id"]])
     odf <- dplyr::top_n(odf, n = 1, wt = .data[["support_n"]])
