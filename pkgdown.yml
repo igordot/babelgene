@@ -3,7 +3,7 @@ pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   babelgene-intro: babelgene-intro.html
-last_built: 2022-03-30T01:18Z
+last_built: 2022-03-30T15:06Z
 urls:
   reference: https://igordot.github.io/babelgene/reference
   article: https://igordot.github.io/babelgene/articles
