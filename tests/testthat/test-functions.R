@@ -114,6 +114,8 @@ test_that("orthologs wrong input", {
   expect_error(orthologs(genes = "PTPRC", species = 10090))
   expect_error(orthologs(genes = "PTPRC", species = "mouse", human = "xxxxx"))
   expect_error(orthologs(genes = "PTPRC", species = "mouse", top = "xxxxx"))
+  expect_error(orthologs(genes = "PTPRC", species = "mouse", min_support = NULL))
+  expect_error(orthologs(genes = "PTPRC", species = "mouse", min_support = ""))
   expect_error(orthologs(genes = c("PTPRC", "ENSG00000081237"), species = "mouse"))
   expect_error(orthologs(genes = c("Ptprc", "ENSMUSG00000026395"), species = "mouse", human = FALSE))
   expect_error(orthologs(genes = data.frame(gene = "PTPRC"), species = "mouse", top = "xxxxx"))
