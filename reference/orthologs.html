@@ -24,7 +24,7 @@ Converts between human and non-human analogs."><!-- mathjax --><script src="http
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">babelgene</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">22.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">22.3.9000</span>
       </span>
     </div>
 
@@ -71,24 +71,35 @@ Converts between human and non-human analogs.</p>
     <h2>Arguments</h2>
     <dl><dt>genes</dt>
 <dd><p>A vector of gene symbols or Entrez/Ensembl IDs.</p></dd>
+
+
 <dt>species</dt>
 <dd><p>Species name, such as <code>Mus musculus</code> or <code>mouse</code> (see <code><a href="species.html">species()</a></code> for options).</p></dd>
+
+
 <dt>human</dt>
 <dd><p>A logical scalar indicating if the input genes are human. If <code>TRUE</code>, the input genes are human. If <code>FALSE</code>, the input genes correspond to the non-human species and the output will be the human equivalents.</p></dd>
+
+
 <dt>min_support</dt>
 <dd><p>Minimum number of supporting source databases.</p></dd>
+
+
 <dt>top</dt>
 <dd><p>For each gene, output only the match with the highest support level if there are multiple hits.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame of gene pairs (human and given species).</p>
+    
+
+<p>A data frame of gene pairs (human and given species).</p>
     </div>
     <div id="references">
     <h2>References</h2>
-    <p>Wright MW, Eyre TA, Lush MJ, Povey S, Bruford EA. HCOP: the HGNC comparison of orthology predictions search tool. <em>Mamm Genome</em>. 2005 Nov;16(11):827-8. doi: <a href="https://doi.org/10.1007/s00335-005-0103-2" class="external-link">10.1007/s00335-005-0103-2</a></p>
-<p>Eyre TA, Wright MW, Lush MJ, Bruford EA. HCOP: a searchable database of human orthology predictions. <em>Brief Bioinform</em>. 2007 Jan;8(1):2-5. doi: <a href="https://doi.org/10.1093/bib/bbl030" class="external-link">10.1093/bib/bbl030</a></p>
-<p>Seal RL, Gordon SM, Lush MJ, Wright MW, Bruford EA. genenames.org: the HGNC resources in 2011. <em>Nucleic Acids Res</em>. 2011 Jan;39:D514-9. doi: <a href="https://doi.org/10.1093/nar/gkq892" class="external-link">10.1093/nar/gkq892</a></p>
+    <p>Wright MW, Eyre TA, Lush MJ, Povey S, Bruford EA. HCOP: the HGNC comparison of orthology predictions search tool. <em>Mamm Genome</em>. 2005 Nov;16(11):827-8. <a href="https://doi.org/10.1007/s00335-005-0103-2" class="external-link">doi:10.1007/s00335-005-0103-2</a></p>
+<p>Eyre TA, Wright MW, Lush MJ, Bruford EA. HCOP: a searchable database of human orthology predictions. <em>Brief Bioinform</em>. 2007 Jan;8(1):2-5. <a href="https://doi.org/10.1093/bib/bbl030" class="external-link">doi:10.1093/bib/bbl030</a></p>
+<p>Seal RL, Gordon SM, Lush MJ, Wright MW, Bruford EA. genenames.org: the HGNC resources in 2011. <em>Nucleic Acids Res</em>. 2011 Jan;39:D514-9. <a href="https://doi.org/10.1093/nar/gkq892" class="external-link">doi:10.1093/nar/gkq892</a></p>
     </div>
 
     <div id="ref-examples">
@@ -129,7 +140,7 @@ Converts between human and non-human analogs.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
