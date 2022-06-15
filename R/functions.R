@@ -6,7 +6,7 @@
 #' @param genes A vector of gene symbols or Entrez/Ensembl IDs.
 #' @param species Species name, such as \code{Mus musculus} or \code{mouse} (see \code{\link[=species]{species()}} for options).
 #' @param human A logical scalar indicating if the input genes are human. If \code{TRUE}, the input genes are human. If \code{FALSE}, the input genes correspond to the non-human species and the output will be the human equivalents.
-#' @param min_support Minimum number of supporting source databases.
+#' @param min_support Minimum number of supporting source databases. Gene pairs available in this package are supported by 2 to 12 databases (the maximum varies depending on the species).
 #' @param top For each gene, output only the match with the highest support level if there are multiple hits.
 #'
 #' @return A data frame of gene pairs (human and given species).
