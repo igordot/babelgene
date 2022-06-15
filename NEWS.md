@@ -1,3 +1,7 @@
+# babelgene (development version)
+
+* Added a check for NAs in input genes (#3).
+
 # babelgene 22.3
 
 * Updated the database.

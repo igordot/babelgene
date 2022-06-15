@@ -31,6 +31,10 @@ orthologs <- function(genes, species, human = TRUE, min_support = 3, top = TRUE)
   if (!is.vector(genes)) {
     stop("`genes` is not a character vector (can be a single gene)")
   }
+  if (anyNA(genes)) {
+    warning("`genes` contains NA values (they will be ignored)")
+    genes <- genes[!is.na(genes)]
+  }
   if (!is(species, "character")) {
     stop("`species` is not a character string")
   }

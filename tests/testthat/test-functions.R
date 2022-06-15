@@ -13,6 +13,8 @@ test_that("orthologs multiple genes", {
   expect_s3_class(o5, "data.frame")
   expect_equal(nrow(o5), 5)
   expect_equal(o5$symbol, c("Cd19", "Cd34", "Cd3d", "Epcam", "Ptprc"))
+  o5na <- suppressWarnings(orthologs(genes = c("PTPRC", NA, "EPCAM", "CD34", "CD3D", "CD19"), species = "mouse"))
+  expect_identical(o5, o5na)
 })
 
 test_that("orthologs multiple matches", {
@@ -108,6 +110,8 @@ test_that("orthologs min_support", {
 test_that("orthologs wrong input", {
   expect_error(orthologs(genes = ".", species = "mouse"))
   expect_error(orthologs(genes = "?", species = "mouse"))
+  expect_error(suppressWarnings(orthologs(genes = NA, species = "mouse")))
+  expect_warning(orthologs(genes = c("PTPRC", NA), species = "mouse"))
   expect_error(orthologs(genes = "xxxxx", species = "mouse"))
   expect_error(orthologs(genes = "xxxxx", species = "mouse", human = FALSE))
   expect_error(orthologs(genes = "PTPRC", species = "xxxxx"))
