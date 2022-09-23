@@ -1,20 +1,26 @@
-url: https://igordot.github.io/babelgene
+url: https://igordot.github.io/babelgene/
 
 template:
-  params:
-    bootswatch: readable
-    ganalytics: UA-130263433-2
+  bootstrap: 5
+  bootswatch: zephyr
+  includes:
+    before_body: |
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW0CJR3Z9Z"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-WW0CJR3Z9Z');
+       </script>
 
 navbar:
+  bg: light
   structure:
     left: []
-    right: [home, intro, reference, articles, news, github]
+    right: [intro, reference, news, github]
   components:
-    home: ~
-    articles: ~
     intro:
       text: Get started
       href: articles/babelgene-intro.html
-
-home:
-  strip_header: true
