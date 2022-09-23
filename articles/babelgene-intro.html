@@ -84,7 +84,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Genomic analysis of model organisms frequently requires the use of databases based on human data or making comparisons to patient-derived resources. This requires harmonization of gene names into the same gene space. The <code>babelgene</code> R package helps to simplify the conversion process. It provides gene orthologs/homologs:</p>
+<p>Genomic analysis of model organisms frequently requires the use of databases based on human data or making comparisons to patient-derived resources. This requires harmonization of gene names into the same gene space. The babelgene R package helps to simplify the conversion process. It provides gene orthologs/homologs:</p>
 <ul>
 <li>for multiple frequently studied model organisms, such as mouse, rat, fly, and zebrafish</li>
 <li>sourced from multiple databases</li>
@@ -96,10 +96,10 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p>You can install the <code>babelgene</code> R package from <a href="https://cran.r-project.org/package=babelgene" class="external-link">CRAN</a>.</p>
+<p>You can install the babelgene R package from <a href="https://cran.r-project.org/package=babelgene" class="external-link">CRAN</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"babelgene"</span><span class="op">)</span></span></code></pre></div>
-<p>Load <code>babelgene</code>.</p>
+<p>Load babelgene.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://igordot.github.io/babelgene/">babelgene</a></span><span class="op">)</span></span></code></pre></div>
 <p>The main functionality is accessed via the <code><a href="../reference/orthologs.html">orthologs()</a></code> function which takes one or more genes and outputs a data frame of predicted ortholog/homolog pairs. The output data frame contains gene symbols and IDs for human and the specified species. Several examples are provided below.</p>
@@ -148,7 +148,7 @@
 <span><span class="co">#&gt; 1 ENSMUSG00000057666</span></span>
 <span><span class="co">#&gt;                                                             support support_n</span></span>
 <span><span class="co">#&gt; 1 Ensembl|HGNC|HomoloGene|NCBI|OMA|OrthoDB|OrthoMCL|Panther|Treefam         9</span></span></code></pre></div>
-<p>The <code><a href="../reference/orthologs.html">orthologs()</a></code> function requires the <code>species</code> parameter to be set. You can check all the species that can be queried with the help of the <code><a href="../reference/species.html">species()</a></code> function.</p>
+<p>The <code><a href="../reference/orthologs.html">orthologs()</a></code> function requires the <code>species</code> parameter to be set (both scientific and common names are acceptable). You can check all the species that can be queried with the help of the <code><a href="../reference/species.html">species()</a></code> function.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/species.html">species</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    taxon_id                 scientific_name</span></span>
@@ -196,7 +196,7 @@
 <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
 </h2>
 <p>The package is based on the data provided by the Human Genome Organization (HUGO) Gene Nomenclature Committee (HGNC) at the European Bioinformatics Institute. The HGNC Comparison of Orthology Predictions (HCOP) integrates the orthology assertions predicted for human genes by eggNOG, Ensembl Compara, HGNC, HomoloGene, Inparanoid, NCBI Gene Orthology, OMA, OrthoDB, OrthoMCL, Panther, PhylomeDB, TreeFam and ZFIN.</p>
-<p>The name <code>babelgene</code> is derived from the <a href="https://en.wikipedia.org/wiki/Babel_fish" class="external-link">Babel Fish</a>, a fictional species of fish that could translate for humans.</p>
+<p>The name babelgene is derived from the <a href="https://en.wikipedia.org/wiki/Babel_fish" class="external-link">Babel Fish</a>, a fictional species of fish that could translate for humans.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
