@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 Genomic analysis of model organisms frequently requires the use of databases based on human data or making comparisons to patient-derived resources.
 This requires harmonization of gene names into the same gene space.
-The `babelgene` R package helps to simplify the conversion process.
+The babelgene R package helps to simplify the conversion process.
 It provides gene orthologs/homologs:
 
 * for multiple frequently studied model organisms, such as mouse, rat, fly, and zebrafish
@@ -29,13 +29,13 @@ It provides gene orthologs/homologs:
 
 ## Usage
 
-You can install the `babelgene` R package from [CRAN](https://cran.r-project.org/package=babelgene).
+You can install the babelgene R package from [CRAN](https://cran.r-project.org/package=babelgene).
 
 ```{r install-package, eval=FALSE}
 install.packages("babelgene")
 ```
 
-Load `babelgene`.
+Load babelgene.
 
 ```{r load-package, message=FALSE}
 library(babelgene)
@@ -64,7 +64,7 @@ It is possible to search by NCBI Entrez or Ensembl IDs instead of gene symbols.
 orthologs(genes = "ENSG00000111640", species = "mouse", human = TRUE)
 ```
 
-The `orthologs()` function requires the `species` parameter to be set.
+The `orthologs()` function requires the `species` parameter to be set (both scientific and common names are acceptable).
 You can check all the species that can be queried with the help of the `species()` function.
 
 ```{r species}
@@ -76,4 +76,4 @@ species()
 The package is based on the data provided by the Human Genome Organization (HUGO) Gene Nomenclature Committee (HGNC) at the European Bioinformatics Institute.
 The HGNC Comparison of Orthology Predictions (HCOP) integrates the orthology assertions predicted for human genes by eggNOG, Ensembl Compara, HGNC, HomoloGene, Inparanoid, NCBI Gene Orthology, OMA, OrthoDB, OrthoMCL, Panther, PhylomeDB, TreeFam and ZFIN.
 
-The name `babelgene` is derived from the [Babel Fish](https://en.wikipedia.org/wiki/Babel_fish), a fictional species of fish that could translate for humans.
+The name babelgene is derived from the [Babel Fish](https://en.wikipedia.org/wiki/Babel_fish), a fictional species of fish that could translate for humans.
