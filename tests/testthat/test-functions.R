@@ -23,15 +23,66 @@ test_that("orthologs multiple matches", {
   expect_equal(nrow(bglap), 3)
 })
 
-test_that("orthologs all mouse genes", {
-  mgi_human_genes <- babelgene:::mgi_orthologs_df$human_symbol
+test_that("orthologs all MGI mouse genes (human to mouse)", {
+  mgi_human_genes <- unique(babelgene:::mgi_orthologs_df$human_symbol)
   mgi_human <- orthologs(genes = mgi_human_genes, species = "mouse", human = TRUE)
   expect_s3_class(mgi_human, "data.frame")
-  expect_gt(nrow(mgi_human), 18000)
-  mgi_mouse_genes <- babelgene:::mgi_orthologs_df$mouse_symbol
+  # all input genes should be in the output table
+  expect_lt(length(unique(mgi_human$human_symbol)), length(mgi_human_genes))
+  expect_gt(length(unique(mgi_human$human_symbol)), length(mgi_human_genes) * 0.9)
+  # there should be almost as many mouse genes as human inputs
+  expect_gt(length(unique(mgi_human$symbol)), length(mgi_human_genes) * 0.9)
+})
+
+test_that("orthologs all MGI mouse genes (mouse to human)", {
+  mgi_mouse_genes <- unique(babelgene:::mgi_orthologs_df$mouse_symbol)
   mgi_mouse <- orthologs(genes = mgi_mouse_genes, species = "mouse", human = FALSE)
   expect_s3_class(mgi_mouse, "data.frame")
-  expect_gt(nrow(mgi_mouse), 18000)
+  # most input genes should be in the output table
+  expect_lt(length(unique(mgi_mouse$symbol)), length(mgi_mouse_genes))
+  expect_gt(length(unique(mgi_mouse$symbol)), length(mgi_mouse_genes) * 0.9)
+  # there should be almost as many human genes as mouse inputs
+  expect_gt(length(unique(mgi_mouse$human_symbol)), length(mgi_mouse_genes) * 0.8)
+})
+
+test_that("orthologs all AGR genes", {
+  agr_df <- babelgene:::agr_orthologs_df
+  # Mus musculus
+  agr_mm <- agr_df[agr_df$species_name == "Mus musculus", ]
+  set.seed(99)
+  agr_hs_mm <- sample(unique(agr_mm$human_symbol), 1000)
+  agr_hs_mm <- orthologs(genes = agr_hs_mm, species = "mouse", human = TRUE, min_support = 2)
+  expect_s3_class(agr_hs_mm, "data.frame")
+  expect_gt(length(unique(agr_hs_mm$human_symbol)), 950)
+  expect_gt(length(unique(agr_hs_mm$symbol)), 950)
+  expect_lt(length(unique(agr_hs_mm$symbol)), 1050)
+  # Drosophila melanogaster (14k coding genes)
+  agr_dm <- agr_df[agr_df$species_name == "Drosophila melanogaster", ]
+  set.seed(99)
+  agr_hs_dm <- sample(unique(agr_dm$human_symbol), 1000)
+  agr_hs_dm <- orthologs(genes = agr_hs_dm, species = "Drosophila melanogaster", human = TRUE, min_support = 2)
+  expect_s3_class(agr_hs_dm, "data.frame")
+  expect_gt(length(unique(agr_hs_dm$human_symbol)), 900)
+  expect_gt(length(unique(agr_hs_dm$symbol)), 1000)
+  expect_lt(length(unique(agr_hs_dm$symbol)), 1100)
+  # Caenorhabditis elegans (20k coding genes)
+  agr_ce <- agr_df[agr_df$species_name == "Caenorhabditis elegans", ]
+  set.seed(99)
+  agr_hs_ce <- sample(unique(agr_ce$human_symbol), 1000)
+  agr_hs_ce <- orthologs(genes = agr_hs_ce, species = "Caenorhabditis elegans", human = TRUE, min_support = 2)
+  expect_s3_class(agr_hs_ce, "data.frame")
+  expect_gt(length(unique(agr_hs_ce$human_symbol)), 850)
+  expect_gt(length(unique(agr_hs_ce$symbol)), 1000)
+  expect_lt(length(unique(agr_hs_ce$symbol)), 1100)
+  # Saccharomyces cerevisiae (6k coding genes)
+  agr_sc <- agr_df[agr_df$species_name == "Saccharomyces cerevisiae", ]
+  set.seed(99)
+  agr_hs_sc <- sample(unique(agr_sc$human_symbol), 1000)
+  agr_hs_sc <- orthologs(genes = agr_hs_sc, species = "Saccharomyces cerevisiae", human = TRUE, min_support = 2)
+  expect_s3_class(agr_hs_sc, "data.frame")
+  expect_gt(length(unique(agr_hs_sc$human_symbol)), 700)
+  expect_gt(length(unique(agr_hs_sc$symbol)), 700)
+  expect_lt(length(unique(agr_hs_sc$symbol)), 800)
 })
 
 test_that("orthologs identifier types", {
