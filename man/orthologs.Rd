@@ -13,7 +13,7 @@ orthologs(genes, species, human = TRUE, min_support = 3, top = TRUE)
 
 \item{human}{A logical scalar indicating if the input genes are human. If \code{TRUE}, the input genes are human. If \code{FALSE}, the input genes correspond to the non-human species and the output will be the human equivalents.}
 
-\item{min_support}{Minimum number of supporting source databases.}
+\item{min_support}{Minimum number of supporting source databases. Gene pairs available in this package are supported by 2 to 12 databases (the maximum varies depending on the species).}
 
 \item{top}{For each gene, output only the match with the highest support level if there are multiple hits.}
 }
