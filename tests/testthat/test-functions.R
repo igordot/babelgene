@@ -50,12 +50,12 @@ test_that("orthologs all AGR genes", {
   # Mus musculus
   agr_mm <- agr_df[agr_df$species_name == "Mus musculus", ]
   set.seed(99)
-  agr_hs_mm <- sample(unique(agr_mm$human_symbol), 1000)
+  agr_hs_mm <- sample(unique(agr_mm$human_symbol), 5000)
   agr_hs_mm <- orthologs(genes = agr_hs_mm, species = "mouse", human = TRUE, min_support = 2)
   expect_s3_class(agr_hs_mm, "data.frame")
-  expect_gt(length(unique(agr_hs_mm$human_symbol)), 950)
-  expect_gt(length(unique(agr_hs_mm$symbol)), 950)
-  expect_lt(length(unique(agr_hs_mm$symbol)), 1050)
+  expect_gt(length(unique(agr_hs_mm$human_symbol)), 4700)
+  expect_gt(length(unique(agr_hs_mm$symbol)), 4700)
+  expect_lt(length(unique(agr_hs_mm$symbol)), 5200)
   # Drosophila melanogaster (14k coding genes)
   agr_dm <- agr_df[agr_df$species_name == "Drosophila melanogaster", ]
   set.seed(99)
