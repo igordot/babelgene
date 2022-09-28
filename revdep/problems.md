@@ -2,11 +2,11 @@
 
 <details>
 
-* Version: 1.0.0
+* Version: 1.2.0
 * GitHub: https://github.com/neurogenomics/orthogene
 * Source code: https://github.com/cran/orthogene
-* Date/Publication: 2021-10-26
-* Number of recursive dependencies: 167
+* Date/Publication: 2022-04-26
+* Number of recursive dependencies: 210
 
 Run `revdep_details(, "orthogene")` for more info
 
@@ -20,20 +20,31 @@ Run `revdep_details(, "orthogene")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-         3,849 / 4,492 (86%)
-      Total genes remaining after convert_orthologs :
-         643 / 4,492 (14%)
-      Finisheddmelanogasterin0.232minutes.
-      Saving benchmarking results ==> /var/folders/lj/80zz6n91631_lb6h3l2m3hq4f503zw/T//Rtmpmg1Vml/file37766fe58c9d.csv
-      WARNING: Species ' monkeytypo ' not found in taxa dict.
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 100 ]
+      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 141 ]
       
       ══ Failed tests ════════════════════════════════════════════════════════════════
-      ── Failure (test-map_orthologs_babelgene.R:18:5): map_orthologs_babelgene works ──
-      nrow(gene_map2) is not more than 13000. Difference: -1.3e+04
+      ── Failure (test-map_orthologs_babelgene.R:12:5): map_orthologs_babelgene works ──
+      nrow(gene_map_b1) is not more than 13100. Difference: -34
+      ── Failure (test-map_orthologs_babelgene.R:29:5): map_orthologs_babelgene works ──
+      nrow(gene_map_b3) is not more than 15900. Difference: -27
+      ── Failure (test-map_orthologs_babelgene.R:42:5): map_orthologs_babelgene works ──
+      nrow(gene_map1) is not more than 29700. Difference: -49
+      ── Failure (test-map_orthologs_babelgene.R:60:5): map_orthologs_babelgene works ──
+      nrow(gene_map2) is not more than 29700. Difference: -49
       
-      [ FAIL 1 | WARN 0 | SKIP 0 | PASS 100 ]
+      [ FAIL 4 | WARN 0 | SKIP 0 | PASS 141 ]
       Error: Test failures
       Execution halted
+    ```
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘DelayedMatrixStats’
+      All declared Imports should be used.
+    There are ::: calls to the package's namespace in its code. A package
+      almost never needs to use ::: for its own objects:
+      ‘aggregate_rows’
     ```
 
