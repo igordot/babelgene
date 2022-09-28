@@ -1,7 +1,7 @@
 Type: Package
 Package: babelgene
 Title: Gene Orthologs for Model Organisms in a Tidy Data Format
-Version: 22.3.9000
+Version: 22.3.9001
 Authors@R: 
     person("Igor", "Dolgalev", , "igor.dolgalev@nyumc.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-4451-126X"))
@@ -32,4 +32,4 @@ VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1

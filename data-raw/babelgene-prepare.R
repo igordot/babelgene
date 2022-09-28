@@ -10,17 +10,16 @@ library(usethis)
 # Import HCOP orthologs -----
 
 # Import the human and ortholog data from all HCOP species
-hcop_txt_url <- "ftp://ftp.ebi.ac.uk/pub/databases/genenames/hcop/human_all_hcop_sixteen_column.txt.gz"
-hcop <- read_tsv(hcop_txt_url, col_types = cols())
+hcop_txt_url <- "https://ftp.ebi.ac.uk/pub/databases/genenames/hcop/human_all_hcop_sixteen_column.txt.gz"
+hcop <- read_tsv(hcop_txt_url, show_col_types = FALSE)
 format(object.size(hcop), units = "Mb")
 nrow(hcop)
 
 # Check if the HCOP table is too small
-if (nrow(hcop) < 860000) stop("HCOP file may be truncated")
+if (nrow(hcop) < 900000) stop("HCOP file may be truncated")
 
 # Clean up the table of orthologs
-orthologs <-
-  hcop %>%
+orthologs <- hcop %>%
   select(
     human_symbol,
     human_entrez = human_entrez_gene,
@@ -58,7 +57,10 @@ orthologs <- mutate(orthologs, support = map_chr(support, paste, collapse = "|")
 orthologs <- mutate(orthologs, support_n = str_count(support, "\\|") + 1)
 orthologs %>% count(support_n)
 
-# Filter ortholog pairs found in only one supporting database
+# Check the distribution of sources for orthologs with one supporting database
+orthologs %>% filter(support_n == 1) %>% count(support, sort = TRUE)
+
+# Keep ortholog pairs found in more than one supporting database
 orthologs <- filter(orthologs, support_n > 1)
 
 # Check orthologs stats
@@ -72,7 +74,7 @@ orthologs %>%
 
 # Import the human and mouse data from MGI
 mgi_txt_url <- "http://www.informatics.jax.org/downloads/reports/HMD_HumanPhenotype.rpt"
-mgi <- read_tsv(mgi_txt_url, col_names = FALSE, col_types = cols())
+mgi <- read_tsv(mgi_txt_url, col_names = FALSE, show_col_types = FALSE)
 format(object.size(mgi), units = "Mb")
 nrow(mgi)
 
@@ -80,13 +82,34 @@ nrow(mgi)
 mgi_orthologs <- mgi[grep("GAPDH|Gapdh", mgi)]
 colnames(mgi_orthologs) <- c("human_symbol", "mouse_symbol")
 mgi_orthologs <- distinct(mgi_orthologs)
+nrow(mgi_orthologs)
 
-if (!"GAPDH" %in% mgi_orthologs$human_symbol) stop("wrong human columns selected")
-if (!"Gapdh" %in% mgi_orthologs$mouse_symbol) stop("wrong mouse columns selected")
+if (nrow(mgi_orthologs) < 29000) stop("too few MGI entries")
+if (!all(c("ACTB", "EGFR", "ZYX") %in% mgi_orthologs$human_symbol)) stop("wrong MGI human columns selected")
+if (!all(c("Actb", "Egfr", "Zyx") %in% mgi_orthologs$mouse_symbol)) stop("wrong MGI mouse columns selected")
 
 # Check the number of genes
 n_distinct(mgi_orthologs$human_symbol)
 n_distinct(mgi_orthologs$mouse_symbol)
+
+# Import AGR orthologs (for testing) -----
+
+# Import the ortholog data from the Alliance of Genome Resources
+agr_txt_url <- "https://download.alliancegenome.org/5.2.1/ORTHOLOGY-ALLIANCE/COMBINED/ORTHOLOGY-ALLIANCE_COMBINED_0.tsv.gz"
+agr <- read_tsv(agr_txt_url, comment = "#", show_col_types = FALSE)
+format(object.size(agr), units = "Mb")
+nrow(agr)
+
+# Select the relevant columns
+agr_orthologs <- agr %>%
+  filter(Gene1SpeciesName == "Homo sapiens", IsBestScore == "Yes") %>%
+  select(human_symbol = Gene1Symbol, species_symbol = Gene2Symbol, species_name = Gene2SpeciesName) %>%
+  arrange(human_symbol, species_name)
+agr_orthologs <- distinct(agr_orthologs)
+nrow(agr_orthologs)
+
+# Check the number of orthologs per species
+agr_orthologs %>% count(species_name)
 
 # Import taxonomy data -----
 
@@ -104,8 +127,7 @@ file.remove("taxdmp.zip")
 file.remove("names.dmp")
 
 # Extract the names for the relevant species
-species <-
-  taxdmp %>%
+species <- taxdmp %>%
   select(taxon_id = X1, name = X2, name_class = X4) %>%
   mutate(taxon_id = as.integer(taxon_id)) %>%
   filter(taxon_id %in% orthologs$taxon_id) %>%
@@ -128,17 +150,20 @@ species %>%
 # Convert to standard data frames (dplyr pipeline sets them as tibbles)
 orthologs_df <- as.data.frame(orthologs)
 mgi_orthologs_df <- as.data.frame(mgi_orthologs)
+agr_orthologs_df <- as.data.frame(agr_orthologs)
 species_df <- as.data.frame(species)
 
 # Check the size of final tables
 format(object.size(orthologs_df), units = "Mb")
 format(object.size(mgi_orthologs_df), units = "Mb")
+format(object.size(agr_orthologs_df), units = "Mb")
 format(object.size(species_df), units = "Kb")
 
 # Create package data
 use_data(
   orthologs_df,
   mgi_orthologs_df,
+  agr_orthologs_df,
   species_df,
   internal = TRUE,
   overwrite = TRUE,
